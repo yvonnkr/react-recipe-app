@@ -1,22 +1,16 @@
-.App {
-  text-align: center;
+/* Override bootstrap fonts to use google fonts (!important) */
+body {
+  font-family: 'Open Sans', sans-serif !important;
 }
 
-.App-logo {
-  height: 40vmin;
+/* my classes */
+.text-slanted {
+  font-family: 'Courgette', cursive;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.text-orange {
+  color: #f15025;
 }
-
-.App-link {
-  color: #09d3ac;
+.letter-spacing {
+  letter-spacing: 0.5rem;
 }
