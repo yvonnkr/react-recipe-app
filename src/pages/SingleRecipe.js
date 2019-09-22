@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { recipeData } from '../data/tempDetails';
 import { Link } from 'react-router-dom';
 
 export default class SingleRecipe extends Component {
@@ -7,14 +6,31 @@ export default class SingleRecipe extends Component {
     super(props);
     const id = this.props.match.params.id;
     this.state = {
-      recipe: recipeData,
+      // recipe: recipeData, //was using dummy data
+      recipe: {},
       id,
-      loading: false
+      loading: true
     };
   }
+
+  async componentDidMount() {
+    const url = `https://www.food2fork.com/api/get?key=${process.env.REACT_APP_API_KEY}&rId=${this.state.id}`;
+
+    try {
+      const response = await fetch(url);
+      const responseData = await response.json();
+
+      this.setState({
+        recipe: responseData.recipe,
+        loading: false
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   render() {
     const {
-      f2f_url,
       image_url,
       ingredients,
       publisher,
